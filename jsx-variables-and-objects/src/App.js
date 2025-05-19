@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import JobBoard from './jobBoard';
+import StyledButton from './styledButton';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <JobBoard />
+        <StyledButton />
       </header>
     </div>
   );
