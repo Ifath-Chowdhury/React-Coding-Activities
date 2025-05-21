@@ -1,3 +1,17 @@
+.job-item-running {
+  color: rgb(47, 255, 92);
+  border: 5px solid rgb(47, 255, 92);
+  margin: 10px;
+  padding: 10px;
+}
+
+.job-item-completed {
+  color: aliceblue;
+  border: 5px solid aliceblue;
+  margin: 10px;
+  padding: 10px;
+}
+
 .App {
   text-align: center;
 }
