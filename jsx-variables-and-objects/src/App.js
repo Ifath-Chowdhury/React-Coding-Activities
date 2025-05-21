@@ -3,9 +3,10 @@ import './App.css';
 import Header from './jobBoardHeader';
 import Footer from './jobBoardFooter';
 import JobList from './jobBoardJobList';
+import DynamicBotManager from './dynamicBotListManager';
 
 function App() {
-  const [showJobList, setShowJobList] = useState(true);
+  /*const [showJobList, setShowJobList] = useState(true);
 
   const showOrHideList = () => {
     if (showJobList == true) {
@@ -24,7 +25,7 @@ function App() {
     { id: 1, name: 'Email Extractor', status: 'running' },
     { id: 2, name: 'Data Analyzer', status: 'completed' },
     { id: 3, name: 'Report Generator', status: 'running' }
-  ];*/
+  ];
 
   let id = 3;
 
@@ -40,6 +41,14 @@ function App() {
         {showJobList ? <JobList jobs = {jobs} /> : null}
         <button onClick={addJob}>Add job</button>
         <Footer />
+      </header>
+    </div>
+  );*/
+
+  return (
+    <div className="App">
+      <header className="App-header">
+        <DynamicBotManager />
       </header>
     </div>
   );
