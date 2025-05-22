@@ -1,0 +1,71 @@
+.form-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1000px;
+  padding: 10px;
+  border: 5px solid rgb(0, 0, 232);
+}
+
+.bot-input {
+  /* Add styles for the input field */
+  font-size: 1.5rem;
+  padding: 5px;
+  border: 5px solid rgb(0, 0, 177);
+  border-radius: 15px;
+  margin-bottom: 10px;
+}
+
+.bot-input:focus {
+    background-color: aliceblue;
+}
+
+/*.form-details {
+  /* Add styles for the form details section 
+}
+
+.bottom-line {
+  /* Add styles for the category buttons container 
+}*/
+
+.tag {
+  /* Add styles for individual category buttons */
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  color: #282c34;
+  border: 3px solid rgb(0, 0, 177);
+  background-color: white;
+}
+
+.job-status {
+  /* Add styles for the job status dropdown */
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  color: #282c34;
+  border: 3px solid rgb(0, 0, 177);
+  background-color: white;
+}
+
+.submit-data {
+  /* Add styles for the submit button */
+  font-size: 2rem;
+  border-radius: 25px 10px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #282c34;
+  border: 8px solid #61dafb;
+  color: #61dafb;
+  transition-duration: 0.4s;
+}
+
+.submit-data:hover {
+    background-color: #61dafb;
+    color: #282c34;
+}
+
+.submit-data:active {
+    size: 500px;
+    background-color: rgb(0, 0, 177);
+}
