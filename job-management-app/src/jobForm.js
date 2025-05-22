@@ -1,11 +1,11 @@
 import React from 'react';
 import './appForm.css';
 
-const JobForm = () => {
+const JobForm = ({ onAddJob }) => {
   return (
     <div className="form-header">
-      <form>
-        <input type="text" className="bot-input" placeholder="Enter the job"/>
+      <form method='post' onSubmit={onAddJob}>
+        <input type="text" className="bot-input" placeholder="Enter the job" name='newName'/>
 
         <div className="form-details">
             <div className="bottom-line">
@@ -15,11 +15,10 @@ const JobForm = () => {
             </div>
         </div>
 
-        <select className='job-status'>
-            <option value="start">Start Process</option>
-            <option value="running">Running</option>
-            <option value="completed">Completed</option>
-            <option value="start">Start Process</option>
+        <select className='job-status' name='newStatus'>
+            <option value="to-do">To do</option>
+            <option value="in progress">In progress</option>
+            <option value="done">Done</option>
         </select>
 
         <button type='submit' className='submit-data'>Add Job</button>
