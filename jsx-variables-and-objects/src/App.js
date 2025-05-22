@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import './App.css';
-import Header from './jobBoardHeader';
+/*import Header from './jobBoardHeader';
 import Footer from './jobBoardFooter';
-import JobList from './jobBoardJobList';
+import JobList from './jobBoardJobList';*/
 //import DynamicBotManager from './dynamicBotListManager';
+import StatusBoard from './statusBoard';
 
 function App() {
-  const [showJobList, setShowJobList] = useState(true);
+  /*const [showJobList, setShowJobList] = useState(true);
 
   const showOrHideList = () => {
     if (showJobList == true) {
@@ -43,15 +44,15 @@ function App() {
         <Footer />
       </header>
     </div>
-  );
+  );*/
 
-  /*return (
+  return (
     <div className="App">
       <header className="App-header">
-        <DynamicBotManager />
+        <StatusBoard />
       </header>
     </div>
-  );*/
+  );
 }
 
 export default App;
