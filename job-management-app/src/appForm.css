@@ -4,6 +4,7 @@
   align-items: center;
   max-width: 1000px;
   padding: 10px;
+  margin: 25px;
   border: 5px solid rgb(0, 0, 232);
 }
 
@@ -14,6 +15,7 @@
   border: 5px solid rgb(0, 0, 177);
   border-radius: 15px;
   margin-bottom: 10px;
+  background-color: white;
 }
 
 .bot-input:focus {
