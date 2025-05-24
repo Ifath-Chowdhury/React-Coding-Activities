@@ -8,14 +8,14 @@ import Done from './done.jpg';
 
 function App() {
   const [jobs, setJobs] = useState([
-    { id: 1, name: 'Email Extractor', category: 'Read Emails', status: 'to-do' },
-    { id: 2, name: 'Data Analyzer', category: 'Web Parsing', status: 'in-progress' },
-    { id: 3, name: 'Report Generator', category: 'Send Emails', status: 'done' }
+    { id: 1, name: 'Email Extractor', category: ['Read Emails'], status: 'to-do' },
+    { id: 2, name: 'Data Analyzer', category: ['Web Parsing'], status: 'in-progress' },
+    { id: 3, name: 'Report Generator', category: ['Send Emails'], status: 'done' }
   ]);
 
   const [jobDetails, setJobDetails] = useState({
     title: '',
-    category: '',
+    category: [],
     status: 'to-do'
   })
 
@@ -46,6 +46,21 @@ function App() {
     }
   }
 
+  const handleCategoryChange = (category) => {
+    // Implement category change functionality
+
+    // Remove category from jobDetails.category array if already selected
+
+    // add to jobDetails.category array if not selected
+
+    setJobDetails({title: jobDetails.title, category: [...jobDetails.category, category], status: jobDetails.status});
+  }
+
+  const clearCategories = () => {
+    //set jobDetails.category to 0
+    setJobDetails({title: jobDetails.title, category: [], status: jobDetails.status})
+  }
+
   const addJob = (e) => {
     //Add job functionality
     e.preventDefault();
@@ -54,7 +69,7 @@ function App() {
     if (!error) {
       setSuccess('Job has been added successfully!')
       // Log jobDetails to console
-      setJobDetails({title: e.target.newName.value, category: e.target.newCategory.value, status: e.target.newStatus.value});
+      setJobDetails({title: e.target.newName.value, category: jobDetails.category, status: e.target.newStatus.value});
       console.log(jobDetails);
       setJobs([...jobs, {id: (jobs.length + 1), name: e.target.newName.value, category: jobDetails.category, status: jobDetails.status}]);
     } else {
@@ -65,7 +80,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <JobForm onAddJob={addJob} onInputChange={handleInputChange}/>
+        <JobForm onAddJob={addJob} onInputChange={handleInputChange} onCategoryToggle={handleCategoryChange} jobDetails={jobDetails}/>
+        <button onClick={clearCategories}>Clear current categories</button>
         {error && <p>{error}</p>}
         {success && <p>{success}</p>}
       </header>

@@ -1,8 +1,9 @@
 import React from 'react';
 import './appForm.css';
 
-const JobForm = ({ onAddJob, onInputChange }) => {
+const JobForm = ({ onAddJob, onInputChange, onCategoryToggle, jobDetails }) => {
   const categories = ['Read Emails', 'Web Parsing', 'Send Emails'];
+  console.log(categories);
   const statuses = ['to-do', 'in-progress', 'done'];
 
   return (
@@ -10,12 +11,10 @@ const JobForm = ({ onAddJob, onInputChange }) => {
       <form method='post' onSubmit={onAddJob}>
         <input type="text" className="bot-input" placeholder="Enter the job" name='newName' onChange={onInputChange}/>
 
-        <div className="form-details">
-          <select className='job-status' name='newCategory' onChange={onInputChange}>
-            {categories.map(category => (
-              <option key={category} value={category}>{category}</option>
+        <div className="form-details" onChange={onInputChange}>
+          {categories.map(category => (
+            <button type="button" className='tag' key={category} value={category} onClick={() => onCategoryToggle(category)}>{category}</button>
             ))}
-          </select>
 
           {/*<div className="bottom-line">
                 <button className='tag'>Read Emails</button>
@@ -36,6 +35,13 @@ const JobForm = ({ onAddJob, onInputChange }) => {
 
         <button type='submit' className='submit-data'>Add Job</button>
       </form>
+
+      <p>Selected categories:</p>
+      <ul>
+        {jobDetails.category.map((category) => (
+          <li>{category}</li>
+        ))}
+      </ul>
     </div>
   );
 };

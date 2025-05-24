@@ -40,6 +40,15 @@
   background-color: white;
 }
 
+.tag:active, .tag:focus {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px;
+  color: #282c34;
+  border: 3px solid rgb(0, 0, 177);
+  background-color: rgb(169, 246, 255);
+}
+
 .job-status {
   /* Add styles for the job status dropdown */
   border-radius: 5px;
