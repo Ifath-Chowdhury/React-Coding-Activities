@@ -8,16 +8,25 @@ import Done from './done.jpg';
 
 function App() {
   const [jobs, setJobs] = useState([
-    { id: 1, name: 'Email Extractor', status: 'to-do' },
-    { id: 2, name: 'Data Analyzer', status: 'in-progress' },
-    { id: 3, name: 'Report Generator', status: 'done' }
+    { id: 1, name: 'Email Extractor', category: 'Read Emails', status: 'to-do' },
+    { id: 2, name: 'Data Analyzer', category: 'Web Parsing', status: 'in-progress' },
+    { id: 3, name: 'Report Generator', category: 'Send Emails', status: 'done' }
   ]);
 
-  let id = 3;
+  const [jobDetails, setJobDetails] = useState({
+    title: '',
+    category: '',
+    status: 'to-do'
+  })
+
+  const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
+
+  //let id = 3;
 
   const deleteJob = (id) => {
     //Delete job functionality
-    setJobs(jobs.filter((job) => job.id != id));
+    setJobs(jobs.filter((job) => job.id !== id));
   };
 
   const updateJobStatus = (i, newStatus) => {
@@ -26,17 +35,39 @@ function App() {
     setJobs(jobs.map(({ id, name, status }) => id === i ? {id, name, status: newStatus} : {id, name, status}));
   };
 
+  const handleInputChange = (e) => {
+    const value = e.target.value;
+    console.log(value);
+
+    if (value == '') {
+      setError('Input field is required');
+    } else {
+      setError('');
+    }
+  }
+
   const addJob = (e) => {
     //Add job functionality
     e.preventDefault();
 
-    setJobs([...jobs, {id: id++, name: e.target.newName.value, status: e.target.newStatus.value}]);
+    //Log jobDetails state to console
+    if (!error) {
+      setSuccess('Job has been added successfully!')
+      // Log jobDetails to console
+      setJobDetails({title: e.target.newName.value, category: e.target.newCategory.value, status: e.target.newStatus.value});
+      console.log(jobDetails);
+      setJobs([...jobs, {id: (jobs.length + 1), name: e.target.newName.value, category: jobDetails.category, status: jobDetails.status}]);
+    } else {
+      setSuccess('')
+    }
   };
 
   return (
     <div className="App">
       <header className="App-header">
-        <JobForm onAddJob={addJob}/>
+        <JobForm onAddJob={addJob} onInputChange={handleInputChange}/>
+        {error && <p>{error}</p>}
+        {success && <p>{success}</p>}
       </header>
 
       <div className='job-column-section'>

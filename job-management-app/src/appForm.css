@@ -50,6 +50,13 @@
   background-color: white;
 }
 
+option {
+  padding: 5px;
+  margin: 5px;
+  color: #282c34;
+  background-color: white;
+}
+
 .submit-data {
   /* Add styles for the submit button */
   font-size: 2rem;

@@ -1,24 +1,37 @@
 import React from 'react';
 import './appForm.css';
 
-const JobForm = ({ onAddJob }) => {
+const JobForm = ({ onAddJob, onInputChange }) => {
+  const categories = ['Read Emails', 'Web Parsing', 'Send Emails'];
+  const statuses = ['to-do', 'in-progress', 'done'];
+
   return (
     <div className="form-header">
       <form method='post' onSubmit={onAddJob}>
-        <input type="text" className="bot-input" placeholder="Enter the job" name='newName'/>
+        <input type="text" className="bot-input" placeholder="Enter the job" name='newName' onChange={onInputChange}/>
 
         <div className="form-details">
-            <div className="bottom-line">
+          <select className='job-status' name='newCategory' onChange={onInputChange}>
+            {categories.map(category => (
+              <option key={category} value={category}>{category}</option>
+            ))}
+          </select>
+
+          {/*<div className="bottom-line">
                 <button className='tag'>Read Emails</button>
                 <button className='tag'>Web Parsing</button>
                 <button className='tag'>Send Emails</button>
-            </div>
+            </div>*/}
         </div>
 
-        <select className='job-status' name='newStatus'>
-            <option value="to-do">To do</option>
+        <select className='job-status' name='newStatus' onChange={onInputChange}>
+            {/*<option value="to-do">To do</option>
             <option value="in progress">In progress</option>
-            <option value="done">Done</option>
+            <option value="done">Done</option>*/
+
+            statuses.map((jobStatus) => (
+              <option key={jobStatus} value={jobStatus}>{jobStatus}</option>
+            ))}
         </select>
 
         <button type='submit' className='submit-data'>Add Job</button>
