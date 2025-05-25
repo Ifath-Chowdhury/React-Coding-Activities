@@ -8,7 +8,7 @@ const JobForm = ({ onAddJob, onInputChange, onCategoryToggle, jobDetails }) => {
 
   return (
     <div className="form-header">
-      <form method='post' onSubmit={onAddJob}>
+      <form id='job-form' method='post' onSubmit={onAddJob}>
         <input type="text" className="bot-input" placeholder="Enter the job" name='newName' onChange={onInputChange}/>
 
         <div className="form-details" onChange={onInputChange}>

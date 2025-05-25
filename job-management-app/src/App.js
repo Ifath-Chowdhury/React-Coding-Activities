@@ -62,6 +62,10 @@ function App() {
     setJobDetails({title: jobDetails.title, category: [], status: jobDetails.status})
   }
 
+  const resetForm = () => {
+    //
+  }
+
   const addJob = (e) => {
     //Add job functionality
     e.preventDefault();
@@ -73,6 +77,7 @@ function App() {
       setJobDetails({title: e.target.newName.value, category: jobDetails.category, status: e.target.newStatus.value});
       console.log(jobDetails);
       setJobs([...jobs, {id: (jobs.length + 1), name: e.target.newName.value, category: jobDetails.category, status: jobDetails.status}]);
+      document.getElementById('job-form').reset()
     } else {
       setSuccess('')
     }

@@ -19,13 +19,13 @@ function CategorySelector() {
 
     return (
         <div>
-            <button style={validateCategory('readEmails') ? categoryStyles.readEmails : categoryStyles.default} onClick={handleCategoryClick('readEmails')}>
+            <button style={validateCategory('readEmails') ? categoryStyles.readEmails : categoryStyles.default} onClick={() => handleCategoryClick('readEmails')}>
                 Read Emails
             </button>
-            <button style={validateCategory('webParsing') ? categoryStyles.webParsing : categoryStyles.default} onClick={handleCategoryClick('webParsing')}>
+            <button style={validateCategory('webParsing') ? categoryStyles.webParsing : categoryStyles.default} onClick={() => handleCategoryClick('webParsing')}>
                 Web Parsing
             </button>
-            <button style={validateCategory('sendEmails') ? categoryStyles.sendEmails : categoryStyles.default} onClick={handleCategoryClick('sendEmails')}>
+            <button style={validateCategory('sendEmails') ? categoryStyles.sendEmails : categoryStyles.default} onClick={() => handleCategoryClick('sendEmails')}>
                 Send Emails
             </button>
         </div>
