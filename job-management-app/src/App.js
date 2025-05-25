@@ -5,6 +5,7 @@ import JobColumn from './jobColumn';
 import ToDo from './to-do.jpg';
 import InProgress from './in-progress.jpg';
 import Done from './done.jpg';
+import CategorySelector from './categorySelector';
 
 function App() {
   const [jobs, setJobs] = useState([
@@ -91,6 +92,8 @@ function App() {
         <JobColumn title="In progress" image={InProgress} alt="In progress icon" jobs={jobs} status="in-progress" onDeleteJob={deleteJob} onUpdateStatus={updateJobStatus}/>
         <JobColumn title="Completed jobs" image={Done} alt="Done icon" jobs={jobs} status="done" onDeleteJob={deleteJob} onUpdateStatus={updateJobStatus}/>
       </div>
+
+      <CategorySelector />
     </div>
   );
 }
