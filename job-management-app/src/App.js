@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import JobForm from './jobForm';
 import JobColumn from './jobColumn';
 import ToDo from './to-do.jpg';
@@ -8,11 +8,18 @@ import Done from './done.jpg';
 import CategorySelector from './categorySelector';
 
 function App() {
-  const [jobs, setJobs] = useState([
+  /*const [jobs, setJobs] = useState([
     { id: 1, name: 'Email Extractor', category: ['Read Emails'], status: 'to-do' },
     { id: 2, name: 'Data Analyzer', category: ['Web Parsing'], status: 'in-progress' },
     { id: 3, name: 'Report Generator', category: ['Send Emails'], status: 'done' }
-  ]);
+  ]);*/
+  const [jobs, setJobs] = useState(() => {
+    const savedJobs = localStorage.getItem('jobs');
+    return savedJobs ? JSON.parse(savedJobs) : [];
+  });
+  useEffect(() => {
+    localStorage.setItem('jobs', JSON.stringify(jobs));
+  }, [jobs]);
 
   const [jobDetails, setJobDetails] = useState({
     title: '',
@@ -27,7 +34,8 @@ function App() {
 
   const deleteJob = (id) => {
     //Delete job functionality
-    setJobs(jobs.filter((job) => job.id !== id));
+    //setJobs(jobs.filter((job) => job.id !== id));
+    setJobs(prevJobs => prevJobs.filter(job => job.id !== id));
   };
 
   const updateJobStatus = (i, newStatus) => {
@@ -62,8 +70,9 @@ function App() {
     setJobDetails({title: jobDetails.title, category: [], status: jobDetails.status})
   }
 
-  const resetForm = () => {
-    //
+  const clearAllJobs = () => {
+    setJobs([]);
+    localStorage.removeItem('jobs');
   }
 
   const addJob = (e) => {
@@ -72,14 +81,20 @@ function App() {
 
     //Log jobDetails state to console
     if (!error) {
-      setSuccess('Job has been added successfully!')
+      setSuccess('Job has been added successfully!');
       // Log jobDetails to console
-      setJobDetails({title: e.target.newName.value, category: jobDetails.category, status: e.target.newStatus.value});
-      console.log(jobDetails);
-      setJobs([...jobs, {id: (jobs.length + 1), name: e.target.newName.value, category: jobDetails.category, status: jobDetails.status}]);
-      document.getElementById('job-form').reset()
+      //setJobDetails({title: e.target.newName.value, category: jobDetails.category, status: e.target.newStatus.value});
+      //console.log(jobDetails);
+      //setJobs([...jobs, {id: (jobs.length + 1), name: e.target.newName.value, category: jobDetails.category, status: jobDetails.status}]);
+
+      const newJob = { id: Date.now(), name: e.target.newName.value, category: jobDetails.category, status: e.target.newStatus.value}
+      console.log(newJob)
+      setJobs(prevJobs => [...prevJobs, newJob]);
+      
+      document.getElementById('job-form').reset();
+      setSuccess('');
     } else {
-      setSuccess('')
+      setSuccess('');
     }
   };
 
@@ -97,6 +112,8 @@ function App() {
         <JobColumn title="In progress" image={InProgress} alt="In progress icon" jobs={jobs} status="in-progress" onDeleteJob={deleteJob} onUpdateStatus={updateJobStatus}/>
         <JobColumn title="Completed jobs" image={Done} alt="Done icon" jobs={jobs} status="done" onDeleteJob={deleteJob} onUpdateStatus={updateJobStatus}/>
       </div>
+
+      <button onClick={clearAllJobs}>Clear All Jobs</button>
 
       <CategorySelector />
     </div>
