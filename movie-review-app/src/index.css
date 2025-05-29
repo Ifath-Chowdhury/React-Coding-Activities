@@ -1,0 +1,70 @@
+
+@font-face {
+  font-family: "Montserrat";
+  src:
+    local("Montserrat"),
+    url("Montserrat-Thin.woff") format("woff");
+}
+:root {
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.main-section {
+  margin: 0;
+  display: block;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+nav {
+  background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+nav ul {
+  list-style-type: none;
+}
+
+nav a {
+  float: left;
+  color: #242424;
+  text-align: center;
+  padding: 10px;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+nav a:hover {
+  background-color: #242424;
+  color: #ffffff;
+}
+
+h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
